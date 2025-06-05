@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             const data = await response.json();
-            alert(`API Response: ${JSON.stringify(data)}`);
+            alert("Data stored successfully: " + JSON.stringify(data));
         } catch (error) {
             console.error("Error:", error);
             alert("Failed to store data.");
