@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const key1 = document.getElementById("key1").value;
         const key2 = document.getElementById("key2").value;
 
-        const apiUrl = "https://your-api-id.execute-api.region.amazonaws.com/store-data";
+        const apiUrl = "https://d779zqnxna.execute-api.ap-south-1.amazonaws.com";
 
     
         try {
