@@ -1,36 +1,37 @@
-// Wait for the DOM to fully load
 document.addEventListener("DOMContentLoaded", function () {
-    // Select the button by its ID
-    const button = document.getElementById("popupButton");
+    // Select the form
+    const form = document.getElementById("inputForm");
 
-    // Add a click event listener
-    button.addEventListener("click", async function () {
-        // Define the API Gateway URL
-        const apiUrl = "https://your-api-id.execute-api.region.amazonaws.com/stage/resource";
+    // Add a submit event listener to the form
+    form.addEventListener("submit", async function (event) {
+        // Prevent the default form submission
+        event.preventDefault();
 
+        // Get values from the input fields
+        const key1 = document.getElementById("key1").value;
+        const key2 = document.getElementById("key2").value;
+
+        const apiUrl = "https://your-api-id.execute-api.region.amazonaws.com/store-data";
+
+    
         try {
-            // Make an API request
             const response = await fetch(apiUrl, {
-                method: "GET", // Adjust to "POST" or other methods as needed
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
+                body: JSON.stringify(inputData),
             });
 
-            // Check if the response is successful
             if (!response.ok) {
                 throw new Error(`API error: ${response.status}`);
             }
 
-            // Parse the JSON response
             const data = await response.json();
-
-            // Display the data in a popup
             alert(`API Response: ${JSON.stringify(data)}`);
         } catch (error) {
-            // Handle errors
-            console.error("Error fetching API:", error);
-            alert("An error occurred while fetching data. Check the console for details.");
+            console.error("Error:", error);
+            alert("Failed to store data.");
         }
     });
 });
