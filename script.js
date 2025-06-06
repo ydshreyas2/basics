@@ -1,12 +1,9 @@
 
 document.getElementById('fetch-button').addEventListener('click', fetchProducts);
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    const form = document.getElementById('inputForm');
-
-    form.addEventListener('submit', async function() {
+document.getElementById("numberForm").addEventListener("submit", async (event) => {
         event.preventDefault(); // Prevents the default form submission behavior
-
+        alert("Form submitted");
         const key1 = document.getElementById('input1').value;
         const key2 = document.getElementById('input2').value;
 
@@ -39,7 +36,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         
     });
-});
+
 
 // Function to fetch products from the API and display them
 
