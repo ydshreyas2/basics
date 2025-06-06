@@ -1,13 +1,16 @@
-document.getElementById("inputForm").addEventListener("submit", putfunction);
+
 document.getElementById('fetch-button').addEventListener('click', fetchProducts);
 
-async function putfunction() 
-    {
-        const form = document.getElementById("inputForm");
-        const key1 = document.getElementById("inputForm").value;
-        const key2 = document.getElementById("inputForm").value;
+document.addEventListener('DOMContentLoaded', (event) => {
+    const form = document.getElementById('inputForm');
 
-        const apiputUrl = "https://d779zqnxna.execute-api.ap-south-1.amazonaws.com/tests-basics/POST";
+    form.addEventListener('submit', async function() {
+        event.preventDefault(); // Prevents the default form submission behavior
+
+        const key1 = document.getElementById('input1').value;
+        const key2 = document.getElementById('input2').value;
+
+         const apiputUrl = "https://d779zqnxna.execute-api.ap-south-1.amazonaws.com/tests-basics/POST";
          
 
         try {
@@ -33,11 +36,16 @@ async function putfunction()
         }
         // Fetch products after storing data
         form.reset();
-    }
+
+        
+    });
+});
+
+// Function to fetch products from the API and display them
 
 async function fetchProducts() {
     try {
-        const apigetUrl = 'https://d779zqnxna.execute-api.ap-south-1.amazonaws.com/tests-basics/fetchdata';// Replace with GET API URL
+        const apigetUrl = 'https://d779zqnxna.execute-api.ap-south-1.amazonaws.com/tests-basics/get';// Replace with GET API URL
         alert("Fetching products...");
         const response = await fetch(apigetUrl);
         const products = await response.json();
