@@ -1,4 +1,3 @@
-import{}
 
 document.addEventListener("DOMContentLoaded", function () {
     // Select the form
@@ -13,18 +12,16 @@ document.addEventListener("DOMContentLoaded", function () {
         const key1 = document.getElementById("key1").value;
         const key2 = document.getElementById("key2").value;
 
-        alert("Key1: " + key1 + ", Key2: " + key2);
-        
-        const apiUrl = "https://d779zqnxna.execute-api.ap-south-1.amazonaws.com/tests-basics";
+        const apiUrl = "https://your-api-id.execute-api.region.amazonaws.com/store-data";
 
-    
         try {
+            // Make an API request with the input values
             const response = await fetch(apiUrl, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(inputData),
+                body: JSON.stringify({ key1, key2 }),
             });
 
             if (!response.ok) {
@@ -32,10 +29,13 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             const data = await response.json();
-            alert("Data stored successfully: " + JSON.stringify(data));
+            alert(`Data saved successfully: ${JSON.stringify(data)}`);
         } catch (error) {
             console.error("Error:", error);
-            alert("Failed to store data.");
+            alert("Failed to store data. Check console for details.");
         }
+
+        // Clear the form inputs
+        form.reset();
     });
 });
