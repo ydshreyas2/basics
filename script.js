@@ -1,15 +1,22 @@
 
 document.getElementById('fetch-button').addEventListener('click', fetchProducts);
+document.getElementById('inputForm').addEventListener('submit', inputfunction);
 
-document.getElementById("numberForm").addEventListener("submit", async (event) => {
-        event.preventDefault(); // Prevents the default form submission behavior
+
+async function inputfunction() 
+    {   
+        alert("Submitting form...");
+        const form = document.getElementById('inputForm');
+        //inputfunction.preventDefault(); // Prevents the default form submission behavior
+        
+         const key1 = document.getElementById('input1').value;
+         const key2 = document.getElementById('input2').value;
         alert("Form submitted");
-        const key1 = document.getElementById('input1').value;
-        const key2 = document.getElementById('input2').value;
+        alert(`Storing data with key1: ${key1}, key2: ${key2}`);
 
-         const apiputUrl = "https://d779zqnxna.execute-api.ap-south-1.amazonaws.com/tests-basics/POST";
-         
-
+       /* const apiputUrl = "https://d779zqnxna.execute-api.ap-south-1.amazonaws.com/tests-basics/POST";
+        
+      
         try {
             alert("Storing data...");
             const response = await fetch(apiputUrl, 
@@ -30,12 +37,13 @@ document.getElementById("numberForm").addEventListener("submit", async (event) =
         } catch (error) {
             console.error("Error occurred:", error);
             alert("Failed to store data. Check console for details.");
-        }
+            
+        }*/
         // Fetch products after storing data
-        form.reset();
+        
 
         
-    });
+    };
 
 
 // Function to fetch products from the API and display them
